@@ -36,6 +36,16 @@ return [
     */
 
     'guards' => [
+        'akshar' => [
+            'driver' => 'session',
+            'provider' => 'akshars',
+        ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
@@ -66,6 +76,16 @@ return [
     */
 
     'providers' => [
+        'akshars' => [
+            'driver' => 'eloquent',
+            'model' => App\Akshar::class,
+        ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
+        ],
+
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
@@ -93,6 +113,20 @@ return [
     */
 
     'passwords' => [
+        'akshars' => [
+            'provider' => 'akshars',
+            'table' => 'akshar_password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'admin_password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',

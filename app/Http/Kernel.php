@@ -53,6 +53,14 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'akshar.auth' => \App\Http\Middleware\RedirectIfNotAkshar::class,
+        'akshar.guest' => \App\Http\Middleware\RedirectIfAkshar::class,
+        // 'akshar.verified' => \App\Http\Middleware\EnsureAksharEmailIsVerified::class,
+        // 'akshar.password.confirm' => \App\Http\Middleware\RequireAksharPassword::class,
+        'admin.auth' => \App\Http\Middleware\RedirectIfNotAdmin::class,
+        'admin.guest' => \App\Http\Middleware\RedirectIfAdmin::class,
+        // 'admin.verified' => \App\Http\Middleware\EnsureAdminEmailIsVerified::class,
+        // 'admin.password.confirm' => \App\Http\Middleware\RequireAdminPassword::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
